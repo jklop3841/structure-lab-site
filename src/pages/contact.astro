@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`联系我 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-white text-slate-900">
+		<Header />
+		<main class="max-w-4xl mx-auto px-6 py-12 space-y-12">
+			<header class="space-y-4">
+				<h1 class="text-3xl md:text-4xl font-bold tracking-tight">联系我</h1>
+				<p class="text-lg text-slate-600 max-w-2xl">
+					无论是寻求合作、技术探讨，还是单纯的交流，我都很乐意听到你的声音。
+				</p>
+			</header>
+
+			<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<!-- Email Card -->
+				<div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 space-y-4">
+					<div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+						</svg>
+					</div>
+					<h2 class="text-xl font-bold">电子邮件</h2>
+					<p class="text-slate-600">最直接的联系方式，我会尽快回复。</p>
+					<a href="mailto:jklop3841@gmail.com" class="inline-block text-blue-600 font-medium hover:underline">
+						jklop3841@gmail.com
+					</a>
+				</div>
+
+				<!-- Social Card -->
+				<div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 space-y-4">
+					<div class="w-12 h-12 bg-slate-200 rounded-2xl flex items-center justify-center text-slate-600">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+						</svg>
+					</div>
+					<h2 class="text-xl font-bold">社交媒体</h2>
+					<p class="text-slate-600">通过其他平台与我建立连接。</p>
+					<div class="flex gap-4">
+						<a href="#" class="text-slate-500 hover:text-blue-600 transition-colors font-medium">GitHub</a>
+						<a href="#" class="text-slate-500 hover:text-blue-400 transition-colors font-medium">Twitter</a>
+						<a href="#" class="text-slate-500 hover:text-green-600 transition-colors font-medium">WeChat</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="py-12 border-t border-slate-100">
+				<h2 class="text-xl font-bold mb-4">关于 structure-lab</h2>
+				<p class="text-slate-600 leading-relaxed max-w-2xl">
+					在这里，我通过技术与思维的融合探索数字世界的可能性。如果你也对效率工具、自动化工作流或结构化沉淀内容感兴趣，欢迎与我共同探讨。
+				</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+

@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "intel:run": "node ./scripts/automation/intel_runner.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

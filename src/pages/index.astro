@@ -2,47 +2,114 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body class="bg-white text-slate-900 selection:bg-blue-100">
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="max-w-4xl mx-auto px-6 py-12 space-y-24">
+			
+			<!-- Hero Section -->
+			<section class="py-12 md:py-20 space-y-6">
+				<h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 leading-tight">
+					构建有序的数字世界，<br/>
+					<span class="text-blue-600">连接创意与执行。</span>
+				</h1>
+				<p class="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed">
+					你好，我是 Structure Lab。我专注于通过结构化的思维和技术工具，帮助个人与团队提升效率，沉淀内容，并打造具有长期价值的数字资产。
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 pt-4">
+					<a href="/projects" class="inline-flex items-center justify-center px-8 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-slate-800 transition-all hover:scale-[1.02] active:scale-[0.98]">
+						查看作品集
+					</a>
+					<a href="/links" class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-slate-200 text-slate-600 font-bold rounded-full hover:border-slate-300 hover:bg-slate-50 transition-all">
+						快速连接
+					</a>
+				</div>
+			</section>
+
+			<!-- Featured Projects Preview (Placeholder) -->
+			<section class="space-y-8">
+				<div class="flex items-baseline justify-between">
+					<h2 class="text-2xl font-bold text-slate-900">精选项目</h2>
+					<a href="/projects" class="text-sm font-medium text-blue-600 hover:underline">全部项目 &rarr;</a>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					{[1, 2].map((i) => (
+						<div class="group relative bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all">
+							<div class="space-y-4">
+								<div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+									<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+									</svg>
+								</div>
+								<h3 class="text-xl font-bold text-slate-900">项目名称 0{i}</h3>
+								<p class="text-slate-600 leading-relaxed">
+									这里是项目的简短描述，介绍你在这个项目中解决的核心问题和使用的技术栈。
+								</p>
+								<div class="flex gap-2">
+									<span class="px-2 py-1 bg-white border border-slate-200 text-xs text-slate-500 rounded-md">Next.js</span>
+									<span class="px-2 py-1 bg-white border border-slate-200 text-xs text-slate-500 rounded-md">Tailwind</span>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Latest Blog Posts -->
+			<section class="space-y-8">
+				<div class="flex items-baseline justify-between">
+					<h2 class="text-2xl font-bold text-slate-900">最新思考</h2>
+					<a href="/blog" class="text-sm font-medium text-blue-600 hover:underline">阅读博客 &rarr;</a>
+				</div>
+				<div class="space-y-4">
+					{posts.map((post) => (
+						<a href={`/blog/${post.id}/`} class="block group p-6 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+							<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+								<div class="space-y-1">
+									<h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+										{post.data.title}
+									</h3>
+									<p class="text-slate-500 text-sm line-clamp-1">{post.data.description}</p>
+								</div>
+								<time class="text-sm text-slate-400 tabular-nums shrink-0">
+									<FormattedDate date={post.data.pubDate} />
+								</time>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+
+			<!-- Contact CTA -->
+			<section class="bg-blue-600 rounded-3xl p-8 md:p-12 text-center space-y-6">
+				<h2 class="text-3xl font-bold text-white">准备好开始合作了吗？</h2>
+				<p class="text-blue-100 max-w-lg mx-auto text-lg">
+					无论是项目咨询、技术交流，还是单纯想打个招呼，我都非常欢迎。
+				</p>
+				<div class="pt-4">
+					<a href="mailto:contact@structure-lab.pages.dev" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-colors shadow-lg">
+						发送邮件
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+							<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+						</svg>
+					</a>
+				</div>
+			</section>
+
 		</main>
 		<Footer />
 	</body>
