@@ -1,7 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
@@ -16,122 +15,138 @@ const posts = (await getCollection('blog'))
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body class="text-[color:var(--color-text)] selection:bg-amber-500/20">
-		<main class="max-w-6xl mx-auto px-6 md:px-10 py-12 md:py-20 space-y-16">
-
-			<!-- Top Profile + Contacts -->
-			<header class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-				<div class="lg:col-span-7 flex gap-6">
+	<body class="bg-[#07080a] text-[#e7e7e7] selection:bg-amber-500/20 antialiased">
+		
+		<main class="max-w-6xl mx-auto px-6 md:px-10 py-12 md:py-24 space-y-20">
+			
+			<!-- Top Profile + Contacts Section -->
+			<header class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+				<div class="lg:col-span-7 flex flex-col sm:flex-row gap-8">
+					<!-- Avatar Container -->
 					<div class="shrink-0">
-						<div class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden border border-white/10 bg-[color:var(--color-surface)] shadow-[var(--shadow-glow)]">
-							<img src="/avatar.jpg" alt="头像" class="w-full h-full object-cover" loading="eager" />
-							<div class="pointer-events-none absolute inset-0 ring-1 ring-[color:rgba(214,178,94,0.22)]"></div>
+						<div class="relative w-24 h-24 md:w-32 md:h-32 rounded-3xl overflow-hidden border border-white/10 bg-[#0c0e12] shadow-[0_0_0_1px_rgba(214,178,94,0.16),0_24_64px_rgba(0,0,0,0.6)]">
+							<img src="/avatar.jpg" alt="卢成" class="w-full h-full object-cover" loading="eager" />
+							<div class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-amber-500/20"></div>
 						</div>
 					</div>
-					<div class="space-y-2">
-						<h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
-							AI智能体 | 卢成
-						</h1>
-						<p class="text-sm md:text-base text-white/65">
-							江苏 · 苏州
-						</p>
-						<p class="text-base md:text-lg text-white/75 leading-relaxed max-w-xl">
+					<!-- Bio Area -->
+					<div class="space-y-4">
+						<div class="space-y-1">
+							<h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white">
+								AI智能体 | 卢成
+							</h1>
+							<p class="text-amber-500/80 font-medium tracking-wide">江苏 · 苏州</p>
+						</div>
+						<p class="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
 							专注 AI Agent / 自动化工作流 / 结构化内容系统。用工程化的方法把复杂问题拆解成可执行的系统，并持续交付可复用资产。
 						</p>
-						<div class="pt-3 flex flex-col sm:flex-row gap-3">
-							<a href="/projects" class="inline-flex items-center justify-center px-6 py-3 rounded-[var(--radius-button)] bg-[color:var(--color-gold)] text-black font-bold hover:brightness-110 transition">
-								查看项目
+						<div class="pt-4 flex flex-wrap gap-4">
+							<a href="/projects" class="px-8 py-3 rounded-xl bg-amber-500 text-black font-bold hover:bg-amber-400 transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+								查看项目成果
 							</a>
-							<a href="/blog" class="inline-flex items-center justify-center px-6 py-3 rounded-[var(--radius-button)] border border-white/15 bg-white/5 text-white font-semibold hover:bg-white/10 transition">
-								读博客
+							<a href="/blog" class="px-8 py-3 rounded-xl border border-white/10 bg-white/5 text-white font-semibold hover:bg-white/10 transition-all">
+								深度思考
 							</a>
 						</div>
 					</div>
 				</div>
 
-				<aside class="lg:col-span-5 space-y-3">
-					<div class="text-xs font-bold tracking-[0.24em] uppercase text-white/45">联系 / Links</div>
-
-					<a href="https://x.com/wromsheep" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 hover:bg-white/10 transition">
-						<div class="space-y-1">
-							<div class="text-white font-semibold">X / Twitter</div>
-							<div class="text-white/55 text-sm">@wromsheep</div>
+				<!-- Contact Links Area -->
+				<aside class="lg:col-span-5 grid grid-cols-1 gap-3">
+					<div class="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-1">CONNECT / CONTACT</div>
+					
+					<a href="https://x.com/wromsheep" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.08] hover:border-amber-500/30 transition-all">
+						<div class="flex items-center gap-4">
+							<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40 group-hover:text-amber-500 transition-colors">𝕏</div>
+							<div>
+								<div class="text-sm font-bold text-white">Twitter / X</div>
+								<div class="text-xs text-white/40">@wromsheep</div>
+							</div>
 						</div>
-						<div class="text-[color:var(--color-gold)] group-hover:translate-x-0.5 transition">→</div>
+						<span class="text-amber-500/50 group-hover:translate-x-1 transition-transform">→</span>
 					</a>
 
-					<a href="https://github.com/jklop3841" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 hover:bg-white/10 transition">
-						<div class="space-y-1">
-							<div class="text-white font-semibold">GitHub</div>
-							<div class="text-white/55 text-sm">jklop3841</div>
+					<a href="https://github.com/jklop3841" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.08] hover:border-amber-500/30 transition-all">
+						<div class="flex items-center gap-4">
+							<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40 group-hover:text-amber-500 transition-colors">GH</div>
+							<div>
+								<div class="text-sm font-bold text-white">GitHub</div>
+								<div class="text-xs text-white/40">jklop3841</div>
+							</div>
 						</div>
-						<div class="text-[color:var(--color-gold)] group-hover:translate-x-0.5 transition">→</div>
+						<span class="text-amber-500/50 group-hover:translate-x-1 transition-transform">→</span>
 					</a>
 
-					<a href="mailto:jklop3841@gmail.com" class="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 hover:bg-white/10 transition">
-						<div class="space-y-1">
-							<div class="text-white font-semibold">Gmail</div>
-							<div class="text-white/55 text-sm">jklop3841@gmail.com</div>
+					<a href="mailto:jklop3841@gmail.com" class="group flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.08] hover:border-amber-500/30 transition-all">
+						<div class="flex items-center gap-4">
+							<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40 group-hover:text-amber-500 transition-colors">@</div>
+							<div>
+								<div class="text-sm font-bold text-white">Gmail</div>
+								<div class="text-xs text-white/40">jklop3841@gmail.com</div>
+							</div>
 						</div>
-						<div class="text-[color:var(--color-gold)] group-hover:translate-x-0.5 transition">→</div>
+						<span class="text-amber-500/50 group-hover:translate-x-1 transition-transform">→</span>
 					</a>
 
-					<button id="wechat-open" class="group w-full text-left flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 hover:bg-white/10 transition">
-						<div class="space-y-1">
-							<div class="text-white font-semibold">WeChat</div>
-							<div class="text-white/55 text-sm">扫码添加好友</div>
+					<button id="wechat-trigger" class="group w-full flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.08] hover:border-amber-500/30 transition-all cursor-pointer">
+						<div class="flex items-center gap-4">
+							<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40 group-hover:text-amber-500 transition-colors">WX</div>
+							<div>
+								<div class="text-sm font-bold text-white">WeChat</div>
+								<div class="text-xs text-white/40">扫码建立连接</div>
+							</div>
 						</div>
-						<div class="text-[color:var(--color-gold)] group-hover:translate-x-0.5 transition">→</div>
+						<span class="text-amber-500/50 group-hover:translate-x-1 transition-transform">→</span>
 					</button>
 				</aside>
 			</header>
 
-			<!-- Projects Grid -->
-			<section class="space-y-6">
-				<div class="flex items-center gap-4">
-					<h2 class="text-lg md:text-xl font-bold text-white">产品 / 项目</h2>
-					<div class="flex-1 h-px bg-white/10"></div>
+			<!-- Products / Projects Grid -->
+			<section class="space-y-10">
+				<div class="flex items-center gap-6">
+					<h2 class="text-xl md:text-2xl font-bold text-white tracking-tight">产品 & 项目集成</h2>
+					<div class="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent"></div>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 					{[1, 2, 3, 4, 5].map((i) => (
-						<article class="group relative rounded-[var(--radius-card)] border border-white/10 bg-[color:var(--color-surface)] p-6 shadow-[var(--shadow-glow)] hover:border-[color:rgba(214,178,94,0.35)] transition">
-							<div class="absolute inset-0 rounded-[var(--radius-card)] opacity-0 group-hover:opacity-100 transition pointer-events-none" style="background: radial-gradient(600px 200px at 20% 0%, rgba(214,178,94,0.12), transparent 60%), radial-gradient(400px 200px at 80% 20%, rgba(245,158,11,0.12), transparent 65%);"></div>
-							<div class="relative space-y-3">
-								<div class="text-xs font-bold tracking-[0.22em] uppercase text-white/45">Module 0{i}</div>
-								<h3 class="text-white font-bold text-lg">高端科技项目占位 0{i}</h3>
-								<p class="text-white/60 text-sm leading-relaxed">
-									一句话描述：解决什么关键问题、产生什么可量化价值（效率/成本/增长）。
+						<article class="group relative p-8 rounded-3xl border border-white/5 bg-[#0c0e12] hover:border-amber-500/30 transition-all overflow-hidden shadow-2xl">
+							<div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+							<div class="relative space-y-4">
+								<div class="text-[10px] font-black text-white/20 tracking-widest uppercase">MODULE 0{i}</div>
+								<h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">前卫科技项目 0{i}</h3>
+								<p class="text-white/50 text-sm leading-relaxed">
+									专注于[此处填入领域]的自动化解决方案，通过[技术手段]实现[具体价值]。
 								</p>
-								<div class="flex flex-wrap gap-2 pt-2">
-									<span class="text-xs px-2 py-1 rounded-full border border-white/10 bg-white/5 text-white/70">AI Agent</span>
-									<span class="text-xs px-2 py-1 rounded-full border border-white/10 bg-white/5 text-white/70">Automation</span>
-								</div>
-								<div class="pt-3">
-									<a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--color-gold)] hover:brightness-110 transition">
-										查看详情 <span class="opacity-80">→</span>
-									</a>
+								<div class="flex gap-2 pt-2">
+									<span class="text-[10px] px-2 py-1 rounded-md border border-white/10 bg-white/5 text-white/40">AI AGENT</span>
+									<span class="text-[10px] px-2 py-1 rounded-md border border-white/10 bg-white/5 text-white/40">AUTOMATION</span>
 								</div>
 							</div>
 						</article>
 					))}
+					<!-- Empty Slot for Placeholder -->
+					<div class="border border-dashed border-white/10 rounded-3xl p-8 flex items-center justify-center bg-white/[0.01]">
+						<span class="text-white/20 text-xs font-bold tracking-widest italic uppercase">Initializing...</span>
+					</div>
 				</div>
 			</section>
 
-			<!-- Blog Feed -->
-			<section class="space-y-6">
-				<div class="flex items-center gap-4">
-					<h2 class="text-lg md:text-xl font-bold text-white">近期思考</h2>
-					<div class="flex-1 h-px bg-white/10"></div>
+			<!-- Recent Thoughts Feed -->
+			<section class="space-y-8">
+				<div class="flex items-center gap-6">
+					<h2 class="text-xl md:text-2xl font-bold text-white tracking-tight">近期思考</h2>
+					<div class="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent"></div>
 				</div>
-				<div class="rounded-[var(--radius-card)] border border-white/10 bg-white/5 overflow-hidden">
-					{posts.map((post, idx) => (
-						<a href={`/blog/${post.id}/`} class={`block px-6 py-5 hover:bg-white/5 transition ${idx ? 'border-t border-white/10' : ''}`}>
-							<div class="flex items-start justify-between gap-6">
+				<div class="rounded-3xl border border-white/5 bg-white/[0.02] divide-y divide-white/5 overflow-hidden text-sm">
+					{posts.map((post) => (
+						<a href={`/blog/${post.id}/`} class="group block px-8 py-6 hover:bg-white/[0.04] transition-all">
+							<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
 								<div class="space-y-1">
-									<div class="text-white font-semibold">{post.data.title}</div>
-									<div class="text-white/55 text-sm">{post.data.description}</div>
+									<h4 class="font-bold text-white group-hover:text-amber-400 transition-colors text-base">{post.data.title}</h4>
+									<p class="text-white/40 line-clamp-1">{post.data.description}</p>
 								</div>
-								<time class="text-white/40 text-xs tabular-nums shrink-0">
+								<time class="text-white/20 tabular-nums font-medium shrink-0">
 									<FormattedDate date={post.data.pubDate} />
 								</time>
 							</div>
@@ -144,32 +159,30 @@ const posts = (await getCollection('blog'))
 
 		<Footer />
 
-		<!-- WeChat Modal -->
-		<div id="wechat-modal" class="fixed inset-0 hidden items-center justify-center bg-black/70 p-6">
-			<div class="w-full max-w-sm rounded-2xl border border-white/10 bg-[color:var(--color-surface)] shadow-[var(--shadow-glow)] p-6">
-				<div class="flex items-start justify-between gap-4">
-					<div class="space-y-1">
-						<div class="text-white font-bold">WeChat</div>
-						<div class="text-white/55 text-sm">扫码添加好友</div>
-					</div>
-					<button id="wechat-close" class="text-white/60 hover:text-white transition">✕</button>
+		<!-- WeChat Modal Overlay -->
+		<div id="wechat-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-6">
+			<div class="w-full max-w-sm rounded-3xl border border-white/10 bg-[#0c0e12] p-8 shadow-[0_0_80px_rgba(0,0,0,1)]">
+				<div class="flex items-center justify-between mb-6">
+					<h3 class="text-xl font-bold text-white tracking-tight">WeChat 连接</h3>
+					<button id="wechat-close" class="text-white/40 hover:text-white transition-colors">✕</button>
 				</div>
-				<div class="mt-5 rounded-xl overflow-hidden border border-white/10 bg-black/20">
-					<img src="/wechat-qr.jpg" alt="WeChat 二维码" class="w-full h-auto" loading="lazy" />
+				<div class="aspect-square rounded-2xl border border-white/5 bg-black/40 overflow-hidden shadow-inner p-2">
+					<img src="/wechat-qr.jpg" alt="WeChat QR" class="w-full h-full object-contain" />
 				</div>
-				<div class="mt-4 text-center text-white/55 text-sm">微信：jklop3841</div>
+				<div class="mt-6 text-center space-y-2">
+					<div class="text-amber-500 font-bold tracking-widest text-sm uppercase">扫码添加好友</div>
+					<div class="text-white/40 text-xs font-medium">微信 ID: jklop3841</div>
+				</div>
 			</div>
 		</div>
 
 		<script>
-			const openBtn = document.getElementById('wechat-open');
 			const modal = document.getElementById('wechat-modal');
-			const closeBtn = document.getElementById('wechat-close');
-			openBtn?.addEventListener('click', () => {
+			document.getElementById('wechat-trigger')?.addEventListener('click', () => {
 				modal?.classList.remove('hidden');
 				modal?.classList.add('flex');
 			});
-			closeBtn?.addEventListener('click', () => {
+			document.getElementById('wechat-close')?.addEventListener('click', () => {
 				modal?.classList.add('hidden');
 				modal?.classList.remove('flex');
 			});
@@ -180,81 +193,5 @@ const posts = (await getCollection('blog'))
 				}
 			});
 		</script>
-	</body>
-</html>
-
-			<!-- Featured Projects Preview (Placeholder) -->
-			<section class="space-y-8">
-				<div class="flex items-baseline justify-between">
-					<h2 class="text-2xl font-bold text-slate-900">精选项目</h2>
-					<a href="/projects" class="text-sm font-medium text-blue-600 hover:underline">全部项目 &rarr;</a>
-				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-					{[1, 2].map((i) => (
-						<div class="group relative bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all">
-							<div class="space-y-4">
-								<div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-									<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-									</svg>
-								</div>
-								<h3 class="text-xl font-bold text-slate-900">项目名称 0{i}</h3>
-								<p class="text-slate-600 leading-relaxed">
-									这里是项目的简短描述，介绍你在这个项目中解决的核心问题和使用的技术栈。
-								</p>
-								<div class="flex gap-2">
-									<span class="px-2 py-1 bg-white border border-slate-200 text-xs text-slate-500 rounded-md">Next.js</span>
-									<span class="px-2 py-1 bg-white border border-slate-200 text-xs text-slate-500 rounded-md">Tailwind</span>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</section>
-
-			<!-- Latest Blog Posts -->
-			<section class="space-y-8">
-				<div class="flex items-baseline justify-between">
-					<h2 class="text-2xl font-bold text-slate-900">最新思考</h2>
-					<a href="/blog" class="text-sm font-medium text-blue-600 hover:underline">阅读博客 &rarr;</a>
-				</div>
-				<div class="space-y-4">
-					{posts.map((post) => (
-						<a href={`/blog/${post.id}/`} class="block group p-6 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
-							<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-								<div class="space-y-1">
-									<h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-										{post.data.title}
-									</h3>
-									<p class="text-slate-500 text-sm line-clamp-1">{post.data.description}</p>
-								</div>
-								<time class="text-sm text-slate-400 tabular-nums shrink-0">
-									<FormattedDate date={post.data.pubDate} />
-								</time>
-							</div>
-						</a>
-					))}
-				</div>
-			</section>
-
-			<!-- Contact CTA -->
-			<section class="bg-blue-600 rounded-3xl p-8 md:p-12 text-center space-y-6">
-				<h2 class="text-3xl font-bold text-white">准备好开始合作了吗？</h2>
-				<p class="text-blue-100 max-w-lg mx-auto text-lg">
-					无论是项目咨询、技术交流，还是单纯想打个招呼，我都非常欢迎。
-				</p>
-				<div class="pt-4">
-					<a href="mailto:contact@structure-lab.pages.dev" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-colors shadow-lg">
-						发送邮件
-						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-							<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-							<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-						</svg>
-					</a>
-				</div>
-			</section>
-
-		</main>
-		<Footer />
 	</body>
 </html>
